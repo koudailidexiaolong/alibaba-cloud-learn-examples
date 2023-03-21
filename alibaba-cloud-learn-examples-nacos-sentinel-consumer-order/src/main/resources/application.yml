@@ -1,0 +1,27 @@
+### 项目名
+spring:
+  application:
+    name: alibaba-cloud-learn-examples-sentinel-consumer-order-80     # 项目名称
+### nacos配置
+  cloud: 
+    nacos:
+      discovery:
+        server-addr: 192.168.10.222:8848
+        enabled: true
+    sentinel: 
+        enabled: true ## 启用 sentinel
+        transport:
+          port: 8719 ## 如果此端口被占用则会默认扫描 +1 端口
+          dashboard: 127.0.0.1:8080    ## 面板ui界面         sentinel dashboard地址
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+### 服务端口
+server:
+  port: 80
+
+
+logging:
+  config: classpath:logback.xml

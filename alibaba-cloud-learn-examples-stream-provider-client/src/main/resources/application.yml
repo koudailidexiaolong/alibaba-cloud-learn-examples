@@ -1,0 +1,46 @@
+### 项目名
+spring:
+  application:
+    name: alibaba-cloud-learn-examples-stream-provider-client   # 项目名称
+  cloud:
+    stream:
+#      default-binder: rabbit ## 默认绑定消息组件类型
+      binders: ## 此处需要配置绑定的rabbitmq服务信息
+        defaultRabbit: 
+          type: rabbit 
+          environment: 
+            spring:  ## rabbitmq环境信息
+              rabbitmq:
+                host: 192.168.10.222
+                port: 5672
+                username: julong
+                password: julong
+      bindings: 
+        output: ## output 为通道名称
+          destination: streamExchange ## 标识使用定义名称  交换机通道
+          content-type: application/json  ## 设置消息类型格式
+          binder: defaultRabbit ## 绑定的消息服务的具体配置和设置  
+### 服务端口
+server:
+  port: 7007
+
+### eureka配置
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${server.port}  # 服务实例名称  alibaba-cloud-learn-examples-provider-payment
+    prefer-ip-address: true ## 显示真实IP地址
+  client:
+    # 不需要注册自己
+    register-with-eureka: true 
+    # 标识本服务为注册中心 职责就是维护服务实例 并不需要取检索服务
+    fetch-registry: true 
+    service-url:
+       ## 图形界面交互地址
+       defaultZone: http://localhost:7001/eureka/
+    
+## 日志配置
+logging:
+  config: classpath:logback.xml
+  
+
+

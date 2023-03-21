@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.julong.system.dao.PaymentDao" >
+  <resultMap id="BaseResultMap" type="com.julong.system.dao.entity.PaymentInfo" >
+    <id column="payment_id" property="paymentId" jdbcType="BIGINT" />
+    <result column="payment_serial" property="paymentSerial" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    payment_id, payment_serial
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from payment
+    where payment_id = #{paymentId,jdbcType=BIGINT}
+  </select>
+  <select id="selectBySelective" resultMap="BaseResultMap" parameterType="com.julong.system.dao.entity.PaymentInfo" >
+    select 
+    <include refid="Base_Column_List" />
+    from payment
+    <where >
+      <if test="paymentId != null and paymentId != ''" >
+         AND payment_id = #{paymentId,jdbcType=BIGINT}
+      </if>
+      <if test="paymentSerial != null and paymentSerial != ''" >
+         AND payment_serial = #{paymentSerial,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from payment
+    where payment_id = #{paymentId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.julong.system.dao.entity.PaymentInfo" >
+    insert into payment (payment_id, payment_serial)
+    values (#{paymentId,jdbcType=BIGINT}, #{paymentSerial,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.julong.system.dao.entity.PaymentInfo" >
+    insert into payment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="paymentId != null and paymentId != '' " >
+        payment_id,
+      </if>
+      <if test="paymentSerial != null and paymentSerial != '' " >
+        payment_serial,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="paymentId != null and paymentId != '' " >
+        #{paymentId,jdbcType=BIGINT},
+      </if>
+      <if test="paymentSerial != null and paymentSerial != '' " >
+        #{paymentSerial,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.julong.system.dao.entity.PaymentInfo" >
+    update payment
+    <set >
+      <if test="paymentSerial != null and paymentSerial != ''" >
+        payment_serial = #{paymentSerial,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where payment_id = #{paymentId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.julong.system.dao.entity.PaymentInfo" >
+    update payment
+    set payment_serial = #{paymentSerial,jdbcType=VARCHAR}
+    where payment_id = #{paymentId,jdbcType=BIGINT}
+  </update>
+</mapper>

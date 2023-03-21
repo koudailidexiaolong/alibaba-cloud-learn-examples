@@ -1,0 +1,43 @@
+### 项目名
+spring:
+  application:
+    name: alibaba-cloud-learn-examples-config-git-client    # 项目名称
+
+  cloud:
+    config:
+      uri:
+        - http://192.168.10.128:7007/
+      label: master ## 分支信息
+      name: application ##配置名称
+      profile: dev ## 文件后缀名
+      enabled: true
+   
+### 服务端口
+server:
+  port: 7008
+
+### eureka配置
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${server.port}  # 服务实例名称  alibaba-cloud-learn-examples-provider-payment
+    prefer-ip-address: true ## 显示真实IP地址
+  client:
+    # 不需要注册自己
+    register-with-eureka: true 
+    # 标识本服务为注册中心 职责就是维护服务实例 并不需要取检索服务
+    fetch-registry: true 
+    service-url:
+       ## 图形界面交互地址
+       defaultZone: http://localhost:7001/eureka/
+    
+## 日志配置
+logging:
+  config: classpath:logback.xml
+  
+## 开启健康监控端点web访问  
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+          

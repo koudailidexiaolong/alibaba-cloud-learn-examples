@@ -1,0 +1,41 @@
+### 项目名
+spring:
+  application:
+    name: alibaba-cloud-learn-examples-seata-storage     # 项目名称
+  datasource:
+    driver-class-name: org.gjt.mm.mysql.Driver              # 驱动名称
+    url: jdbc:mysql://192.168.10.222:3306/world?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root                                          # 账户
+    password: root                                          # 密码
+    type: com.alibaba.druid.pool.DruidDataSource            # 数据源操作类型
+### nacos配置
+  cloud: 
+    nacos:
+      discovery:
+        server-addr: 192.168.10.222:8848
+        enabled: true
+        service: ${spring.application.name}
+    alibaba:
+      seata:
+        tx-service-group: tx_seata_default_group ##绑定事务组
+feign:
+  hystrix:
+    enabled: false
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+### 服务端口
+server:
+  port: 29001
+
+### mybaits配置
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.julong.**.entity
+### 日志配置
+logging:
+  config: classpath:logback.xml
+  

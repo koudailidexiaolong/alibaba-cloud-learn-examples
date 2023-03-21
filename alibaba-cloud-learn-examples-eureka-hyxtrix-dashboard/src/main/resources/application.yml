@@ -1,0 +1,29 @@
+### 项目名
+spring:
+  application:
+    name: alibaba-cloud-learn-examples-eureka-hystrix-dashboard    # 项目名称
+
+
+### 服务端口
+server:
+  port: 7001
+  servlet:
+    context-path: /
+### eureka配置
+eureka:
+  instance:
+    hostname: ${spring.application.name}  # 服务实例名称  alibaba-cloud-learn-examples-eureka-server-7001
+  client:
+    # 不需要注册自己
+    register-with-eureka: false 
+    # 标识本服务为注册中心 职责就是维护服务实例 并不需要取检索服务
+    fetch-registry: false 
+    service-url:
+       ## 图形界面交互地址
+       defaultZone: http://${spring.application.name}:${server.port}/eureka/
+  server:
+    enable-self-preservation: true ## 启用自我保护
+    
+## 日志配置
+logging:
+  config: classpath:logback.xml

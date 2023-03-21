@@ -1,0 +1,136 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.julong</groupId>
+	<artifactId>alibaba-cloud-learn-examples</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<description>阿里巴巴spring cloud 学习</description>
+
+	<modules>
+		<module>alibaba-cloud-learn-examples-mybaits-generator</module>
+		<module>alibaba-cloud-learn-examples-commons-api</module>
+		<module>alibaba-cloud-learn-examples-eureka-provider-payment</module>
+		<module>alibaba-cloud-learn-examples-eureka-consumer-order</module>
+		<module>alibaba-cloud-learn-examples-eureka-server</module>
+		<module>alibaba-cloud-learn-examples-eureka-server-one</module>
+		<module>alibaba-cloud-learn-examples-eureka-provider-payment-one</module>
+		
+		<module>alibaba-cloud-learn-examples-zookeeper-provider-payment</module>
+		<module>alibaba-cloud-learn-examples-zookeeper-consumer-order</module>
+		
+		<module>alibaba-cloud-learn-examples-consul-provider-payment</module>
+		<module>alibaba-cloud-learn-examples-consul-consumer-order</module>
+		
+		<module>alibaba-cloud-learn-examples-eureka-ribbon-consumer-order</module>
+		
+		<module>alibaba-cloud-learn-examples-eureka-feign-consumer-order</module>
+		
+		<module>alibaba-cloud-learn-examples-eureka-hystrix-server</module>
+		<module>alibaba-cloud-learn-examples-eureka-hystrix-provider-payment</module>
+		<module>alibaba-cloud-learn-examples-eureka-hystrix-feign-consumer-order</module>
+		<module>alibaba-cloud-learn-examples-eureka-hyxtrix-dashboard</module>
+		
+		<module>alibaba-cloud-learn-examples-zuul-server</module>
+		<module>alibaba-cloud-learn-examples-zuul-eureka-server</module>
+		<module>alibaba-cloud-learn-examples-zuul-provider-payment</module>
+		
+		<module>alibaba-cloud-learn-examples-gateway-eureka-server</module>
+		<module>alibaba-cloud-learn-examples-gateway-server</module>
+		<module>alibaba-cloud-learn-examples-gateway-provider-payment</module>
+		
+		<module>alibaba-cloud-learn-examples-config-eureka-server</module>
+		<module>alibaba-cloud-learn-examples-config-git-server</module>
+		<module>alibaba-cloud-learn-examples-config-local-server</module>
+		<module>alibaba-cloud-learn-examples-config-git-client</module>
+		
+		<module>alibaba-cloud-learn-examples-config-bus-server</module>
+		<module>alibaba-cloud-learn-examples-config-bus-client</module>
+		
+		<module>alibaba-cloud-learn-examples-stream-eureka-server</module>
+		<module>alibaba-cloud-learn-examples-stream-provider-client</module>
+		<module>alibaba-cloud-learn-examples-stream-consumer-client-1</module>
+		<module>alibaba-cloud-learn-examples-stream-consumer-client-2</module>
+		
+		<module>alibaba-cloud-learn-examples-sleuth-eureka-server</module>
+		<module>alibaba-cloud-learn-examples-sleuth-provider-payment</module>
+		<module>alibaba-cloud-learn-examples-sleuth-consumer-order</module>
+		<module>alibaba-cloud-learn-examples-sleuth-zipkin-server</module>
+		
+		<module>alibaba-cloud-learn-examples-nacos-provider-payment</module>
+		<module>alibaba-cloud-learn-examples-nacos-provider-payment-one</module>
+		<module>alibaba-cloud-learn-examples-nacos-consumer-order</module>
+		
+		<module>alibaba-cloud-learn-examples-nacos-config-client</module>
+		
+		<module>alibaba-cloud-learn-examples-nacos-sentinel-provider-payment</module>
+		<module>alibaba-cloud-learn-examples-nacos-sentinel-consumer-order</module>
+		<module>alibaba-cloud-learn-examples-nacos-sentinel-xianliu</module>
+		
+		<module>alibaba-cloud-learn-examples-nacos-sentinel-ribbon-provider-payment-one</module>
+		<module>alibaba-cloud-learn-examples-nacos-sentinel-ribbon-provider-payment-two</module>
+		<module>alibaba-cloud-learn-examples-nacos-sentinel-ribbon-consumer-order</module>
+		
+		<module>alibaba-cloud-learn-examples-nacos-sentinel-feign-provider-payment-one</module>
+		<module>alibaba-cloud-learn-examples-nacos-sentinel-feign-provider-payment-two</module>
+		<module>alibaba-cloud-learn-examples-nacos-sentinel-feign-consumer-order</module>
+		
+		<!-- 服务熔断 配置保存数据库-->
+		<module>alibaba-cloud-learn-examples-nacos-sentinel-datasource</module>
+		
+		<!-- seata 分布式事务测试-->
+		<module>alibaba-cloud-learn-examples-seata-commons-api</module>
+		<module>alibaba-cloud-learn-examples-seata-storage</module>
+		<module>alibaba-cloud-learn-examples-seata-order</module>
+		<module>alibaba-cloud-learn-examples-seata-account</module>
+	</modules>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- 引入 springboot 版本控制-->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>2.2.2.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!-- 引入 springcloud 版本控制-->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Hoxton.SR1</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!-- 引入 cloud-alibaba 版本控制-->
+			<dependency>
+				<groupId>com.alibaba.cloud</groupId>
+				<artifactId>spring-cloud-alibaba-dependencies</artifactId>
+				<version>2.1.0.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

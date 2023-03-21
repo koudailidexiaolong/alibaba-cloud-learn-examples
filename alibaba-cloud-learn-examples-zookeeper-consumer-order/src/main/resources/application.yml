@@ -1,0 +1,17 @@
+### 项目名
+spring:
+  application:
+    name: alibaba-cloud-learn-examples-zookeeper-consumer-order    # 项目名称
+  cloud:
+    zookeeper:
+      connect-string: 192.168.10.222:2181
+
+
+### 服务端口
+server:
+  port: 80
+
+### zookeeper配置
+
+logging:
+  config: classpath:logback.xml

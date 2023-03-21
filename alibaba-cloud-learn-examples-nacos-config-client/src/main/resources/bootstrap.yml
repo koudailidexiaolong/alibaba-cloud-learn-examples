@@ -1,0 +1,31 @@
+### 服务端口
+server:
+  port: 9009
+### 项目名
+spring:
+  application:
+    name: alibaba-cloud-learn-examples-nacos-config-client     # 项目名称
+### nacos配置
+  cloud: 
+    nacos:
+      discovery:
+        server-addr: 192.168.10.222:8848
+        enabled: true
+        service: ${spring.application.name}
+      config: ### 配置中心
+        server-addr: 192.168.10.222:8848
+        encode: utf-8
+        file-extension: yaml  ## 指定配置中心文件后缀名 默认为 properties
+        group: DEV_GROUP  ## 分组
+        namespace: nacos-config-dev
+
+management: 
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+### 日志配置
+logging:
+  config: classpath:logback.xml
+  

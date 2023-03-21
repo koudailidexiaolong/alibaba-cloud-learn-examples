@@ -1,0 +1,33 @@
+### 项目名
+spring:
+  application:
+    name: alibaba-cloud-learn-examples-consul-provider-payment     # 项目名称
+  datasource:
+    driver-class-name: org.gjt.mm.mysql.Driver              # 驱动名称
+    url: jdbc:mysql://192.168.10.222:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root                                          # 账户
+    password: root                                          # 密码
+    type: com.alibaba.druid.pool.DruidDataSource            # 数据源操作类型
+  cloud:
+    consul:
+      discovery:
+        enabled: true ## 启用consul配置
+        service-name: ${spring.application.name}  ## 服务名称
+      host: 192.168.10.222 ## 服务地址
+      port: 8500 ## 服务端口
+
+### 服务端口
+server:
+  port: 8006
+
+### mybaits配置
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.julong.**.entity
+### 日志配置
+logging:
+  config: classpath:logback.xml
+  
+  
+### consul配置
+  

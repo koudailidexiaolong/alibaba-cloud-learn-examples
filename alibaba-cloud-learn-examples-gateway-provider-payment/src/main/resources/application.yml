@@ -1,0 +1,38 @@
+### 项目名
+spring:
+  application:
+    name: alibaba-cloud-learn-examples-gateway-provider-payment     # 项目名称
+  datasource:
+    driver-class-name: org.gjt.mm.mysql.Driver              # 驱动名称
+    url: jdbc:mysql://192.168.10.222:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root                                          # 账户
+    password: root                                          # 密码
+    type: com.alibaba.druid.pool.DruidDataSource            # 数据源操作类型
+
+### 服务端口
+server:
+  port: 8001
+
+### mybaits配置
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.julong.**.entity
+### 日志配置
+logging:
+  config: classpath:logback.xml
+  
+  
+### eureka配置
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${server.port}  # 服务实例名称  alibaba-cloud-learn-examples-provider-payment
+    prefer-ip-address: true ## 显示真实IP地址
+  client:
+    # 不需要注册自己
+    register-with-eureka: true 
+    # 标识本服务为注册中心 职责就是维护服务实例 并不需要取检索服务
+    fetch-registry: true 
+    service-url:
+       ## 图形界面交互地址
+       defaultZone: http://localhost:7001/eureka/
+  

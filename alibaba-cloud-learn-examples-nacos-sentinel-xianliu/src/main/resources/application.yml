@@ -1,0 +1,31 @@
+### 项目名
+spring:
+  application:
+    name: alibaba-cloud-learn-examples-sentinel-xianliu     # 项目名称
+
+### nacos配置
+  cloud: 
+    nacos:
+      discovery:
+        server-addr: 192.168.10.222:8848
+        enabled: true
+        service: ${spring.application.name}
+    sentinel:
+      enabled: true ## 启用 sentinel
+      transport:
+        port: 8999
+        dashboard: 127.0.0.1:8080    ## 面板ui界面    
+        
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+### 服务端口
+server:
+  port: 9001
+
+### 日志配置
+logging:
+  config: classpath:logback.xml
+  
